@@ -1,0 +1,354 @@
+[gd_scene load_steps=18 format=3 uid="uid://cghqbxago8jlm"]
+
+[ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="1_fhmiw"]
+[ext_resource type="Texture2D" uid="uid://br4d5uqv5tgxq" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_1.png" id="1_gb1m3"]
+[ext_resource type="Script" path="res://scripts/menu_scenes/main_menu/main_menu.gd" id="1_scq5j"]
+[ext_resource type="Texture2D" uid="uid://01pvt2ko4qy2" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_2.png" id="2_i0cxa"]
+[ext_resource type="Texture2D" uid="uid://dq8d8afqhtv53" path="res://assets/gui/GUI.png" id="4_xju68"]
+[ext_resource type="StyleBox" uid="uid://crqw1grdlvl0d" path="res://assets/styles/small_button.tres" id="5_a5uwp"]
+[ext_resource type="AudioStream" uid="uid://gyredjxpvdab" path="res://assets/music/menu_music.ogg" id="7_inma6"]
+[ext_resource type="AudioStream" uid="uid://xpou0pw3th0v" path="res://assets/sfx/ui_accept.ogg" id="8_3qxea"]
+[ext_resource type="AudioStream" uid="uid://bplle3cr3iysj" path="res://assets/sfx/ui_cancel.ogg" id="9_qk41t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwlyh"]
+texture = ExtResource("4_xju68")
+region_rect = Rect2(0.0293121, 95.3685, 48.0477, 32.4268)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3m2jx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8i7fq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3yyc"]
+
+[sub_resource type="Animation" id="Animation_cp56w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButtonsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1500, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_xvjai"]
+resource_name = "main_to_settings"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButtonsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 160), Vector2(-900, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1500, 100), Vector2(170, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_y1syd"]
+resource_name = "settings_to_main"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButtonsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-900, 160), Vector2(300, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(170, 100), Vector2(1500, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wok5u"]
+_data = {
+"RESET": SubResource("Animation_cp56w"),
+"main_to_settings": SubResource("Animation_xvjai"),
+"settings_to_main": SubResource("Animation_y1syd")
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_scq5j")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BackgroundBack" type="Sprite2D" parent="Background"]
+z_index = -2
+position = Vector2(576.5, 324.5)
+scale = Vector2(3.59687, 3.59444)
+texture = ExtResource("1_gb1m3")
+
+[node name="BackgroundFront" type="Sprite2D" parent="Background"]
+z_index = -1
+position = Vector2(576.5, 324.5)
+scale = Vector2(3.59688, 3.59444)
+texture = ExtResource("2_i0cxa")
+
+[node name="MainUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TitleText" type="Label" parent="MainUI"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 32
+text = "The Legend of the Test Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainButtonsPanel" type="Panel" parent="MainUI"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 160.0
+offset_right = 900.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwlyh")
+
+[node name="PlayButton" type="Button" parent="MainUI/MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 211.0
+offset_top = -112.0
+offset_right = -221.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_a5uwp")
+theme_override_styles/hover = ExtResource("5_a5uwp")
+theme_override_styles/pressed = ExtResource("5_a5uwp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="MainUI/MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 211.0
+offset_top = -27.0
+offset_right = -221.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_a5uwp")
+theme_override_styles/hover = ExtResource("5_a5uwp")
+theme_override_styles/pressed = ExtResource("5_a5uwp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8i7fq")
+text = "SETTINGS"
+clip_text = true
+
+[node name="ExitButton" type="Button" parent="MainUI/MainButtonsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 211.0
+offset_top = 55.0
+offset_right = -221.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_a5uwp")
+theme_override_styles/hover = ExtResource("5_a5uwp")
+theme_override_styles/pressed = ExtResource("5_a5uwp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c3yyc")
+text = "EXIT"
+clip_text = true
+
+[node name="SettingsPanel" type="Panel" parent="MainUI"]
+layout_mode = 0
+offset_left = 1500.0
+offset_top = 100.0
+offset_right = 2298.0
+offset_bottom = 622.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwlyh")
+
+[node name="SettingsTitleLabel" type="Label" parent="MainUI/SettingsPanel"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 41.0
+offset_right = 518.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeSetting" type="Control" parent="MainUI/SettingsPanel"]
+anchors_preset = 0
+offset_left = 115.0
+offset_top = 150.0
+offset_right = 685.0
+offset_bottom = 210.0
+
+[node name="Label" type="Label" parent="MainUI/SettingsPanel/MasterVolumeSetting"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 19.0
+offset_right = 98.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+text = "MUSIC VOLUME"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MainUI/SettingsPanel/MasterVolumeSetting"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 10.0
+offset_right = 555.0
+offset_bottom = 48.0
+value = 55.0
+
+[node name="MusicVolumeSetting" type="Control" parent="MainUI/SettingsPanel"]
+anchors_preset = 0
+offset_left = 115.0
+offset_top = 200.0
+offset_right = 685.0
+offset_bottom = 260.0
+
+[node name="Label" type="Label" parent="MainUI/SettingsPanel/MusicVolumeSetting"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 19.0
+offset_right = 98.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+text = "MUSIC VOLUME"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MainUI/SettingsPanel/MusicVolumeSetting"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 10.0
+offset_right = 555.0
+offset_bottom = 48.0
+value = 55.0
+
+[node name="SFXVolumeSetting" type="Control" parent="MainUI/SettingsPanel"]
+anchors_preset = 0
+offset_left = 115.0
+offset_top = 250.0
+offset_right = 685.0
+offset_bottom = 310.0
+
+[node name="Label" type="Label" parent="MainUI/SettingsPanel/SFXVolumeSetting"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 158.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+text = "SFX VOLUME"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="MainUI/SettingsPanel/SFXVolumeSetting"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 10.0
+offset_right = 555.0
+offset_bottom = 48.0
+value = 83.0
+
+[node name="BackButton" type="Button" parent="MainUI/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = 122.0
+offset_right = -551.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_a5uwp")
+theme_override_styles/hover = ExtResource("5_a5uwp")
+theme_override_styles/pressed = ExtResource("5_a5uwp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c3yyc")
+text = "GO BACK"
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainUI"]
+libraries = {
+"": SubResource("AnimationLibrary_wok5u")
+}
+
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_inma6")
+autoplay = true
+bus = &"Music"
+
+[node name="UIAccept" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_3qxea")
+bus = &"SFX"
+
+[node name="UICancel" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_qk41t")
+bus = &"SFX"
+
+[connection signal="pressed" from="MainUI/MainButtonsPanel/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainUI/MainButtonsPanel/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainUI/MainButtonsPanel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="value_changed" from="MainUI/SettingsPanel/MasterVolumeSetting/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="MainUI/SettingsPanel/MusicVolumeSetting/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="MainUI/SettingsPanel/SFXVolumeSetting/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="pressed" from="MainUI/SettingsPanel/BackButton" to="." method="_on_back_button_pressed"]
