@@ -18,7 +18,7 @@ func _process(delta):
 	attack_1_shape.disabled = attack_1_timer.is_stopped() && attack_2_timer.is_stopped()
 
 func can_attackAgain():
-	return  attack_1_timer.time_left < (attack_1_timer.wait_time / 4)
+	return  attack_1_timer.time_left < (attack_1_timer.wait_time / 3)
 	
 func _on_attack_1_timer_timeout():
 	if attack_again:

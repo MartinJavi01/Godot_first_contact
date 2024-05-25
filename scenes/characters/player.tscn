@@ -307,6 +307,7 @@ size = Vector2(18, 37)
 size = Vector2(39, 37)
 
 [node name="player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_mbsgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -327,6 +328,7 @@ shape = SubResource("RectangleShape2D_3cxwt")
 script = ExtResource("7_w3da0")
 
 [node name="Attack1_Hitbox" type="Area2D" parent="AttackLogicContainer"]
+collision_mask = 2
 
 [node name="Attack_1_Shape" type="CollisionShape2D" parent="AttackLogicContainer/Attack1_Hitbox"]
 position = Vector2(74.5, 61.5)

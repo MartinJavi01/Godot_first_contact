@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://yl3ak2i8yff8"]
+
+[ext_resource type="Texture2D" uid="uid://dc1rs5mqk4hti" path="res://assets/graphics/Characters/enemies/Flying_eye/fly.png" id="1_6ouql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4f4"]
+atlas = ExtResource("1_6ouql")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwfhk"]
+atlas = ExtResource("1_6ouql")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrn21"]
+atlas = ExtResource("1_6ouql")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7mib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwfhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrn21")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2r25f"]
+radius = 16.0312
+
+[node name="FlyingEye" type="Area2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k7mib")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
+shape = SubResource("CircleShape2D_2r25f")
