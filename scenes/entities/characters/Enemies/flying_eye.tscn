@@ -1,17 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://yl3ak2i8yff8"]
+[gd_scene load_steps=9 format=3 uid="uid://yl3ak2i8yff8"]
 
-[ext_resource type="Texture2D" uid="uid://dc1rs5mqk4hti" path="res://assets/graphics/Characters/enemies/Flying_eye/fly.png" id="1_6ouql"]
+[ext_resource type="Script" path="res://scripts/entities/characters/enemies/flying_eye.gd" id="1_enkiv"]
+[ext_resource type="Texture2D" uid="uid://dc1rs5mqk4hti" path="res://assets/graphics/Characters/enemies/Flying_eye/fly.png" id="1_ov8c8"]
+[ext_resource type="PackedScene" uid="uid://caw4hleiuypp1" path="res://scenes/entities/health_system.tscn" id="3_ssfg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc4f4"]
-atlas = ExtResource("1_6ouql")
+atlas = ExtResource("1_ov8c8")
 region = Rect2(450, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwfhk"]
-atlas = ExtResource("1_6ouql")
+atlas = ExtResource("1_ov8c8")
 region = Rect2(600, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrn21"]
-atlas = ExtResource("1_6ouql")
+atlas = ExtResource("1_ov8c8")
 region = Rect2(750, 0, 150, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k7mib"]
@@ -36,6 +38,9 @@ radius = 16.0312
 
 [node name="FlyingEye" type="Area2D"]
 collision_layer = 2
+script = ExtResource("1_enkiv")
+attack_damage = 2.0
+knockback_force = Vector2(50, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k7mib")
@@ -45,3 +50,8 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 4)
 shape = SubResource("CircleShape2D_2r25f")
+
+[node name="HealthSystem" parent="." instance=ExtResource("3_ssfg7")]
+maxHealth = 4.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

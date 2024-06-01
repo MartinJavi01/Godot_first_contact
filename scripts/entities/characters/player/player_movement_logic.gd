@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var attack_1_timer = $AttackLogicContainer/Attack1_Timer
-@onready var attack_2_timer = $AttackLogicContainer/Attack2_Timer
+@onready var attack_1_shape = $AttackLogicContainer/Attack1_Hitbox/Attack_1_Shape
+@onready var health_system = $HealthSystem
 
 const MOVE_SPEED = 200.0
 const JUMP_FORCE = -250
@@ -10,26 +10,33 @@ const JUMP_TIME = 0.3
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jump_timer = JUMP_TIME
+var input_blocked = false
+var previous_direction
+
+func _ready():
+	previous_direction = 1
 
 func _physics_process(delta):
-	
-	if attack_1_timer.is_stopped() && attack_2_timer.is_stopped(): 
-		check_movement(delta)
-	else:
-		velocity.x = 0
-		
-	move_and_slide()
+	velocity.y += gravity * delta
+	if health_system.currentHealth > 0:
+		if !input_blocked: 
+			check_movement(delta) 
+		else:
+			velocity.x = lerp(velocity.x, 0.0, 0.1)
+			
+		move_and_slide()
 
 func check_movement(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
 		velocity.x = direction * MOVE_SPEED
-		animated_sprite.flip_h = direction == -1
+		if direction != previous_direction:
+			scale.x = -1
+		previous_direction = direction
 	else:
 		velocity.x = lerp(velocity.x, 0.0, 1)
 		
 	if !is_on_floor():
-		velocity.y += gravity * delta
 		if Input.is_action_pressed("jump") && jump_timer > 0:
 			velocity.y = JUMP_FORCE
 			jump_timer -= delta
@@ -41,3 +48,8 @@ func check_movement(delta):
 		jump_timer = JUMP_TIME
 		if Input.is_action_pressed("jump"):
 			velocity.y = JUMP_FORCE
+
+func apply_knockback(knockback_vector: Vector2):
+	velocity = knockback_vector
+	input_blocked = true
+	animated_sprite.on_hit(0.2)

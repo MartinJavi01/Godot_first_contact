@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2yqtjy6t283d"]
 
 [ext_resource type="Script" path="res://scripts/test_scene/test_scene.gd" id="1_k8jv8"]
-[ext_resource type="PackedScene" uid="uid://chdov8i3q2250" path="res://scenes/characters/player.tscn" id="2_s10qo"]
-[ext_resource type="PackedScene" uid="uid://yl3ak2i8yff8" path="res://scenes/characters/Enemies/flying_eye.tscn" id="3_jqndc"]
+[ext_resource type="PackedScene" uid="uid://chdov8i3q2250" path="res://scenes/entities/characters/player.tscn" id="2_s10qo"]
+[ext_resource type="PackedScene" uid="uid://yl3ak2i8yff8" path="res://scenes/entities/characters/Enemies/flying_eye.tscn" id="3_jqndc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j0yut"]
 distance = -431.0
@@ -11,13 +11,15 @@ distance = -431.0
 script = ExtResource("1_k8jv8")
 
 [node name="fake floor" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fake floor"]
 position = Vector2(581, 10)
 shape = SubResource("WorldBoundaryShape2D_j0yut")
 
 [node name="player" parent="." instance=ExtResource("2_s10qo")]
-position = Vector2(597, 346)
+position = Vector2(630, 418)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 325)
