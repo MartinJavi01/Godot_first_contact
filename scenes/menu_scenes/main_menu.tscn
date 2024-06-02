@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="1_fhmiw"]
 [ext_resource type="Texture2D" uid="uid://br4d5uqv5tgxq" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_1.png" id="1_gb1m3"]
-[ext_resource type="Script" path="res://scripts/menu_scenes/main_menu/main_menu.gd" id="1_scq5j"]
+[ext_resource type="Script" path="res://scripts/scenes/menu_scenes/main_menu/main_menu.gd" id="1_scq5j"]
 [ext_resource type="Texture2D" uid="uid://01pvt2ko4qy2" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_2.png" id="2_i0cxa"]
 [ext_resource type="Texture2D" uid="uid://dq8d8afqhtv53" path="res://assets/gui/GUI.png" id="4_xju68"]
 [ext_resource type="StyleBox" uid="uid://crqw1grdlvl0d" path="res://assets/styles/small_button.tres" id="5_a5uwp"]
