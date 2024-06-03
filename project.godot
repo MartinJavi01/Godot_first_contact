@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot_first_contact"
-run/main_scene="res://scenes/world_scenes/oak_woods_1.tscn"
+run/main_scene="res://scenes/menu_scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

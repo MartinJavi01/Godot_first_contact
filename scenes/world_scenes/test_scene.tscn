@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/scenes/root.gd" id="1_k8jv8"]
 [ext_resource type="PackedScene" uid="uid://chdov8i3q2250" path="res://scenes/entities/characters/player.tscn" id="2_s10qo"]
-[ext_resource type="PackedScene" uid="uid://yl3ak2i8yff8" path="res://scenes/entities/characters/Enemies/flying_eye.tscn" id="3_jqndc"]
+[ext_resource type="PackedScene" uid="uid://yl3ak2i8yff8" path="res://scenes/entities/Enemies/flying_eye.tscn" id="3_jqndc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j0yut"]
 distance = -431.0

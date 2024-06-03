@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://yl3ak2i8yff8"]
+
+[ext_resource type="Script" path="res://scripts/entities/enemies/flying_eye.gd" id="1_8sjep"]
+[ext_resource type="Texture2D" uid="uid://dc1rs5mqk4hti" path="res://assets/graphics/Characters/enemies/Flying_eye/fly.png" id="2_k4mw1"]
+[ext_resource type="PackedScene" uid="uid://caw4hleiuypp1" path="res://scenes/entities/health_system.tscn" id="3_n8trf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ivh4"]
+radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xlo3j"]
+radius = 19.0263
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4f4"]
+atlas = ExtResource("2_k4mw1")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwfhk"]
+atlas = ExtResource("2_k4mw1")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrn21"]
+atlas = ExtResource("2_k4mw1")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7mib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwfhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrn21")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="FlyingEye" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 129
+script = ExtResource("1_8sjep")
+follow_range = 100.0
+move_speed = 100.0
+attack_damage = 2.0
+knockback_force = Vector2(100, -100)
+
+[node name="InnerHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(4, 4)
+shape = SubResource("CircleShape2D_8ivh4")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(4, 4)
+shape = SubResource("CircleShape2D_xlo3j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k7mib")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HealthSystem" parent="." instance=ExtResource("3_n8trf")]
+maxHealth = 4.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
