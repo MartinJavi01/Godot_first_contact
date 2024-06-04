@@ -44,7 +44,7 @@ func prepare_attack():
 	if !preparing_attack:
 		preparing_attack = true
 		await get_tree().create_timer(0.5).timeout
-		if player_in_range():
+		if player_in_range() || global_position.distance_to(target_pos) <= 10.0:
 			target_pos = Vector2(global_position.x, player.global_position.y - 20.0)
 			attacking = true	
 		preparing_attack = false 
@@ -62,9 +62,11 @@ func check_animations():
 
 func _on_hitbox_body_entered(body):
 	if body is CharacterBody2D && body.name == "player":
-		attacking = false
-		var healthSystem = body.get_node("HealthSystem")
-		healthSystem.substract_health(attack_damage)
-		var knockback_vector = Vector2(1 if global_position.x < body.global_position.x else -1, 1) * knockback_force
-		print(knockback_vector)
-		body.apply_knockback(knockback_vector)
+		target_pos = global_position
+		var playerHealthSystem = body.get_node("HealthSystem")
+		if playerHealthSystem.currentHealth > 0:
+			playerHealthSystem.substract_health(attack_damage)
+			var knockback_vector = Vector2(1 if global_position.x < body.global_position.x else -1, 1) * knockback_force
+			body.apply_knockback(knockback_vector)
+			await get_tree().create_timer(0.5).timeout
+			attacking = false

@@ -27,7 +27,7 @@ func hitbox_active():
 	return timer_1_on_range || timer_2_on_range
 
 func can_attackAgain():
-	return  attack_1_timer.time_left < (attack_1_timer.wait_time / 2)
+	return  attack_1_timer.time_left < (attack_1_timer.wait_time / 1.5)
 	
 # SIGNALS
 func _on_attack_1_timer_timeout():

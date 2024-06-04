@@ -43,4 +43,5 @@ func check_death():
 	if animation != "death":
 		play("death")
 		await animation_finished
-		get_tree().change_scene_to_file("res://scripts/scenes/menu_scenes/main_menu/main_menu.gd")
+		await get_tree().create_timer(0.5).timeout
+		get_tree().change_scene_to_file("res://scenes/menu_scenes/main_menu.tscn")
