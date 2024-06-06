@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://chdov8i3q2250"]
+[gd_scene load_steps=71 format=3 uid="uid://chdov8i3q2250"]
 
 [ext_resource type="Script" path="res://scripts/entities/characters/player/player_movement_logic.gd" id="1_v8myx"]
 [ext_resource type="Texture2D" uid="uid://bc6asiykkbnww" path="res://assets/graphics/Characters/Knight/attack.png" id="2_acwhd"]
@@ -11,6 +11,13 @@
 [ext_resource type="Script" path="res://scripts/entities/characters/player/player_animation_logic.gd" id="7_0bd0t"]
 [ext_resource type="Script" path="res://scripts/entities/characters/player/player_attack_logic.gd" id="8_kxulg"]
 [ext_resource type="PackedScene" uid="uid://caw4hleiuypp1" path="res://scenes/entities/health_system.tscn" id="9_qysqu"]
+[ext_resource type="AudioStream" uid="uid://yj3ydunmoakb" path="res://assets/sfx/entities/knight/walk.wav" id="12_dlewj"]
+[ext_resource type="AudioStream" uid="uid://b6igin5q7if5i" path="res://assets/sfx/entities/knight/hurt.wav" id="13_cnn74"]
+[ext_resource type="AudioStream" uid="uid://o6sbqul6tr78" path="res://assets/sfx/entities/knight/jump.wav" id="14_rprvl"]
+[ext_resource type="AudioStream" uid="uid://gi6riq1ea1g3" path="res://assets/sfx/entities/knight/dash.wav" id="15_jnfs2"]
+[ext_resource type="AudioStream" uid="uid://b7jseoar3c5tv" path="res://assets/sfx/entities/knight/death.wav" id="16_2xpya"]
+[ext_resource type="AudioStream" uid="uid://bn4cxevo475oi" path="res://assets/sfx/entities/knight/attack1.wav" id="17_rynvc"]
+[ext_resource type="AudioStream" uid="uid://mrly2t1v4ieo" path="res://assets/sfx/entities/knight/attack2.wav" id="18_1sniv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y8nc"]
 atlas = ExtResource("2_acwhd")
@@ -428,7 +435,7 @@ size = Vector2(18, 37)
 size = Vector2(39, 37)
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 0
 floor_snap_length = 5.0
 script = ExtResource("1_v8myx")
 
@@ -471,6 +478,43 @@ one_shot = true
 [node name="HealthSystem" parent="." instance=ExtResource("9_qysqu")]
 position = Vector2(-45, -63)
 maxHealth = 10.0
+
+[node name="SFXSounds" type="Node2D" parent="."]
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("12_dlewj")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("13_cnn74")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("14_rprvl")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("15_jnfs2")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("16_2xpya")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Attack1Sound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("17_rynvc")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Attack2Sound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+stream = ExtResource("18_1sniv")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="AttackLogicContainer/Attack1_Hitbox" to="AttackLogicContainer" method="_on_attack_1_hitbox_body_entered"]
 [connection signal="timeout" from="AttackLogicContainer/Attack1_Timer" to="AttackLogicContainer" method="_on_attack_1_timer_timeout"]

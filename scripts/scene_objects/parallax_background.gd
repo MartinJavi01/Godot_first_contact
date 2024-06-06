@@ -21,5 +21,5 @@ func _process(delta):
 	global_position.x = startPos + moveOffset
 	if totalDist > width + startPos:
 		startPos += width
-	elif totalDist < -width - startPos:
+	elif totalDist < -width + startPos:
 		startPos -= width

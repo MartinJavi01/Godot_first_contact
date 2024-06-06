@@ -4,6 +4,8 @@ extends Node2D
 @onready var attack_1_timer = $Attack1_Timer
 @onready var attack_1_shape = $Attack1_Hitbox/Attack_1_Shape
 @onready var attack_2_timer = $Attack2_Timer
+@onready var attack_1_sound = $"../SFXSounds/Attack1Sound"
+@onready var attack_2_sound = $"../SFXSounds/Attack2Sound"
 
 @export var damage: float
 
@@ -13,6 +15,7 @@ func _process(delta):
 	if player.is_on_floor():
 		if Input.is_action_just_pressed("attack"):
 			if attack_1_timer.is_stopped() && attack_2_timer.is_stopped():
+				attack_1_sound.play()
 				player.input_blocked = true
 				player.velocity.x = 0
 				attack_1_timer.start()
@@ -32,6 +35,7 @@ func can_attackAgain():
 # SIGNALS
 func _on_attack_1_timer_timeout():
 	if attack_again:
+		attack_2_sound.play()
 		attack_again = false
 		attack_2_timer.start()
 	else:

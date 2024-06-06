@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var health_system = $HealthSystem
 @onready var player = %player
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var wing_sound = $Sounds/WingSound
 
 @export var follow_range: float
 @export var move_speed: float
@@ -19,6 +20,9 @@ func _ready():
 	attacking = false
 
 func _physics_process(delta):
+	if !wing_sound.playing:
+		wing_sound.play()
+		
 	check_health()
 	check_movement(delta)
 	check_animations()
@@ -62,7 +66,6 @@ func check_animations():
 
 func _on_hitbox_body_entered(body):
 	if body is CharacterBody2D && body.name == "player":
-		target_pos = global_position
 		var playerHealthSystem = body.get_node("HealthSystem")
 		if playerHealthSystem.currentHealth > 0:
 			playerHealthSystem.substract_health(attack_damage)

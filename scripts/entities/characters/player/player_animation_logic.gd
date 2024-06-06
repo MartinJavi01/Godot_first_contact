@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 @onready var attack_1_timer = $"../AttackLogicContainer/Attack1_Timer"
 @onready var attack_2_timer = $"../AttackLogicContainer/Attack2_Timer"
 @onready var health_system = $"../HealthSystem"
+@onready var death_sound = $"../SFXSounds/DeathSound"
 
 var on_action = false
 
@@ -41,6 +42,7 @@ func on_dash(dash_time: float):
 
 func check_death():
 	if animation != "death":
+		death_sound.play()
 		play("death")
 		await animation_finished
 		await get_tree().create_timer(0.5).timeout

@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_1_shape = $AttackLogicContainer/Attack1_Hitbox/Attack_1_Shape
 @onready var health_system = $HealthSystem
+@onready var walk_sound = $SFXSounds/WalkSound
+@onready var hurt_sound = $SFXSounds/HurtSound
+@onready var jump_sound = $SFXSounds/JumpSound
+@onready var dash_sound = $SFXSounds/DashSound
 
 const MOVE_SPEED = 200.0
 const JUMP_FORCE = -250
@@ -28,13 +32,17 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
 			if dashing:
 				velocity = Vector2(direction * MOVE_SPEED * 2, 0.0)
+	else:
+		velocity.x = 0
 			
-		move_and_slide()
+	move_and_slide()
 
 func check_movement(delta):
 	direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
 		velocity.x = direction * MOVE_SPEED
+		if is_on_floor() && !walk_sound.playing:
+			walk_sound.play()
 		if direction != previous_direction:
 			scale.x = -1
 		previous_direction = direction
@@ -54,10 +62,12 @@ func check_movement(delta):
 		can_dash = true
 		jump_timer = JUMP_TIME
 		if Input.is_action_pressed("jump"):
+			jump_sound.play()
 			velocity.y = JUMP_FORCE
 
 func _input(event):
 	if Input.is_action_just_pressed("dash") && direction != 0 && can_dash:
+		dash_sound.play()
 		input_blocked = true
 		dashing = true
 		can_dash = false
@@ -67,6 +77,7 @@ func _input(event):
 		dashing = false
 
 func apply_knockback(knockback_vector: Vector2):
+	hurt_sound.play()
 	velocity = knockback_vector
 	input_blocked = true
 	animated_sprite.on_hit(0.2)
