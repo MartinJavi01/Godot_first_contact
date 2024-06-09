@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://yl3ak2i8yff8"]
+[gd_scene load_steps=13 format=3 uid="uid://yl3ak2i8yff8"]
 
 [ext_resource type="Script" path="res://scripts/entities/enemies/flying_eye.gd" id="1_8sjep"]
 [ext_resource type="Texture2D" uid="uid://dc1rs5mqk4hti" path="res://assets/graphics/Characters/enemies/Flying_eye/fly.png" id="2_k4mw1"]
 [ext_resource type="PackedScene" uid="uid://caw4hleiuypp1" path="res://scenes/entities/health_system.tscn" id="3_n8trf"]
 [ext_resource type="AudioStream" uid="uid://bw6mmd8amsjrr" path="res://assets/sfx/entities/enemies/flying_eye/wing_sound.wav" id="4_ex1rn"]
+[ext_resource type="AudioStream" uid="uid://c0vpq53t7ry7d" path="res://assets/sfx/entities/enemies/default_damage_sound.wav" id="5_awq5y"]
+[ext_resource type="AudioStream" uid="uid://brm5eojl3eelj" path="res://assets/sfx/entities/enemies/default_death_sound.wav" id="6_q47mi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ivh4"]
 
@@ -54,7 +56,7 @@ shape = SubResource("CircleShape2D_8ivh4")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 129
+collision_mask = 137
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(4, 4)
@@ -76,4 +78,15 @@ volume_db = -10.0
 max_distance = 300.0
 bus = &"SFX"
 
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_awq5y")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_q47mi")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

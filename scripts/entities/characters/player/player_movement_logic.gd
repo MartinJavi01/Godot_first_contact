@@ -50,6 +50,8 @@ func check_movement(delta):
 		velocity.x = lerp(velocity.x, 0.0, 1)
 		
 	if !is_on_floor():
+		if velocity.y > 0:
+			jump_timer = 0
 		if Input.is_action_pressed("jump") && jump_timer > 0:
 			velocity.y = JUMP_FORCE
 			jump_timer -= delta

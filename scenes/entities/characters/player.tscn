@@ -459,7 +459,7 @@ damage = 2.0
 
 [node name="Attack1_Hitbox" type="Area2D" parent="AttackLogicContainer"]
 position = Vector2(75, 59)
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
 
 [node name="Attack_1_Shape" type="CollisionShape2D" parent="AttackLogicContainer/Attack1_Hitbox"]
