@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://s70gbougmsy"]
+
+[ext_resource type="Script" path="res://scripts/ui/dialog_player.gd" id="1_2xqo1"]
+[ext_resource type="Texture2D" uid="uid://dq8d8afqhtv53" path="res://assets/gui/GUI.png" id="1_ddw4y"]
+[ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="2_8i1qf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8thto"]
+atlas = ExtResource("1_ddw4y")
+region = Rect2(145, 65, 46, 14)
+
+[node name="DialogPlayer" type="CanvasLayer"]
+script = ExtResource("1_2xqo1")
+
+[node name="DialogBackground" type="TextureRect" parent="."]
+offset_right = 575.0
+offset_bottom = 132.0
+texture = SubResource("AtlasTexture_8thto")
+
+[node name="DialogText" type="Label" parent="DialogBackground"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 19.0
+offset_right = 548.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_8i1qf")
+theme_override_font_sizes/font_size = 24
+text = "Test text to test autowrap"
+autowrap_mode = 2

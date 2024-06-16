@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmqvbif050hr7"]
+
+[ext_resource type="Script" path="res://scripts/ui/dialog_area.gd" id="1_skg76"]
+[ext_resource type="AudioStream" uid="uid://xpou0pw3th0v" path="res://assets/sfx/ui_accept.ogg" id="2_hnswe"]
+
+[node name="DialogArea" type="Area2D"]
+process_mode = 3
+collision_layer = 0
+script = ExtResource("1_skg76")
+
+[node name="interact_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hnswe")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

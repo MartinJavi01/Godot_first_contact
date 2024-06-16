@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://01pvt2ko4qy2" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_2.png" id="8_hmr6n"]
 [ext_resource type="Script" path="res://scripts/scene_objects/parallax_background.gd" id="9_m17kq"]
 [ext_resource type="Texture2D" uid="uid://cyol837bbdnby" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_3.png" id="9_ti85k"]
-[ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="11_4pv4j"]
 [ext_resource type="PackedScene" uid="uid://djlirpsfeeeuk" path="res://scenes/scene_object_scenes/area_reset.tscn" id="12_21jnu"]
+[ext_resource type="PackedScene" uid="uid://s70gbougmsy" path="res://scenes/UI/dialog_player.tscn" id="13_6stwy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d83wr"]
 texture = ExtResource("1_41ygv")
@@ -1270,6 +1270,24 @@ sources/0 = SubResource("TileSetAtlasSource_d83wr")
 [node name="root" type="Node2D"]
 script = ExtResource("1_qs3bp")
 
+[node name="UI Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogPlayer" parent="UI Container" instance=ExtResource("13_6stwy")]
+scale = Vector2(1.2, 1.2)
+transform = Transform2D(1.2, 0, 0, 1.2, 0, 0)
+scene_dialogs = "res://assets/dialogs/oak_woods.json"
+
+[node name="DialogBackground" parent="UI Container/DialogPlayer" index="0"]
+visible = false
+offset_left = 199.167
+offset_top = 393.333
+offset_right = 774.167
+offset_bottom = 525.333
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-52, 0)
 tile_set = SubResource("TileSet_d1wxv")
@@ -1370,60 +1388,11 @@ z_as_relative = false
 position = Vector2(-320, 0)
 texture = ExtResource("7_bhskr")
 
-[node name="TextLabels" type="Node2D" parent="."]
-
-[node name="WelcomeLabel" type="Label" parent="TextLabels"]
-z_as_relative = false
-offset_left = 70.0
-offset_top = 392.0
-offset_right = 245.0
-offset_bottom = 456.0
-theme_override_fonts/font = ExtResource("11_4pv4j")
-theme_override_font_sizes/font_size = 8
-text = "Hey, thanks for playing this simple demo!"
-autowrap_mode = 2
-
-[node name="ControlsLabel" type="Label" parent="TextLabels"]
-z_index = -1
-z_as_relative = false
-offset_left = 70.0
-offset_top = 466.0
-offset_right = 261.0
-offset_bottom = 496.0
-theme_override_fonts/font = ExtResource("11_4pv4j")
-theme_override_font_sizes/font_size = 8
-text = "Use A and D to move left and right, and space to jump"
-autowrap_mode = 2
-
-[node name="DashAttackControlsLabel" type="Label" parent="TextLabels"]
-z_index = -1
-z_as_relative = false
-offset_left = 543.0
-offset_top = 387.0
-offset_right = 734.0
-offset_bottom = 428.0
-theme_override_fonts/font = ExtResource("11_4pv4j")
-theme_override_font_sizes/font_size = 8
-text = "Long jump ahead! Use J to dash and K to swing your blade, you can combo two attacks!"
-autowrap_mode = 2
-
-[node name="DemoEndLabel" type="Label" parent="TextLabels"]
-z_index = -1
-z_as_relative = false
-offset_left = 1308.0
-offset_top = 333.0
-offset_right = 1499.0
-offset_bottom = 374.0
-theme_override_fonts/font = ExtResource("11_4pv4j")
-theme_override_font_sizes/font_size = 8
-text = "This is the end of the demo for now, I hope you enjoyed it!
-
-Press Esc to go back to the main menu"
-autowrap_mode = 2
-
 [node name="AreaReset" parent="." instance=ExtResource("12_21jnu")]
 position = Vector2(143, 690)
 resetTime = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaReset"]
 shape = SubResource("WorldBoundaryShape2D_t2kam")
+
+[editable path="UI Container/DialogPlayer"]
