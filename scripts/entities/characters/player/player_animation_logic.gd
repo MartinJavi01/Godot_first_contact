@@ -13,7 +13,7 @@ func _process(delta):
 		if health_system.currentHealth > 0:
 			if attack_1_timer.is_stopped() && attack_2_timer.is_stopped():
 				if player.is_on_floor():
-					if player.velocity.x != 0:
+					if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
 						play("walk")
 					else:
 						play("idle")

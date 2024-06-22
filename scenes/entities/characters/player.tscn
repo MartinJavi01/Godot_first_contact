@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://chdov8i3q2250"]
+[gd_scene load_steps=72 format=3 uid="uid://chdov8i3q2250"]
 
 [ext_resource type="Script" path="res://scripts/entities/characters/player/player_movement_logic.gd" id="1_v8myx"]
 [ext_resource type="Texture2D" uid="uid://bc6asiykkbnww" path="res://assets/graphics/Characters/Knight/attack.png" id="2_acwhd"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://b7jseoar3c5tv" path="res://assets/sfx/entities/knight/death.wav" id="16_2xpya"]
 [ext_resource type="AudioStream" uid="uid://bn4cxevo475oi" path="res://assets/sfx/entities/knight/attack1.wav" id="17_rynvc"]
 [ext_resource type="AudioStream" uid="uid://mrly2t1v4ieo" path="res://assets/sfx/entities/knight/attack2.wav" id="18_1sniv"]
+[ext_resource type="Texture2D" uid="uid://bf678x3xvtycp" path="res://assets/gui/EKeyIcon.png" id="19_7xdco"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y8nc"]
 atlas = ExtResource("2_acwhd")
@@ -434,12 +435,13 @@ size = Vector2(18, 37)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svhf8"]
 size = Vector2(39, 37)
 
-[node name="player" type="CharacterBody2D"]
-collision_mask = 0
-floor_snap_length = 5.0
+[node name="player" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+collision_mask = 135
 script = ExtResource("1_v8myx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(1, -3)
 sprite_frames = SubResource("SpriteFrames_v8nxm")
 animation = &"idle"
@@ -448,74 +450,80 @@ centered = false
 offset = Vector2(-56, -60)
 script = ExtResource("7_0bd0t")
 
-[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+[node name="PlayerHitbox" type="CollisionShape2D" parent="player"]
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_3cxwt")
 
-[node name="AttackLogicContainer" type="Node2D" parent="."]
+[node name="AttackLogicContainer" type="Node2D" parent="player"]
 position = Vector2(-45, -63)
 script = ExtResource("8_kxulg")
 damage = 2.0
 
-[node name="Attack1_Hitbox" type="Area2D" parent="AttackLogicContainer"]
+[node name="Attack1_Hitbox" type="Area2D" parent="player/AttackLogicContainer"]
 position = Vector2(75, 59)
 collision_layer = 8
 collision_mask = 2
 
-[node name="Attack_1_Shape" type="CollisionShape2D" parent="AttackLogicContainer/Attack1_Hitbox"]
+[node name="Attack_1_Shape" type="CollisionShape2D" parent="player/AttackLogicContainer/Attack1_Hitbox"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_svhf8")
 disabled = true
 
-[node name="Attack1_Timer" type="Timer" parent="AttackLogicContainer"]
+[node name="Attack1_Timer" type="Timer" parent="player/AttackLogicContainer"]
 wait_time = 0.4
 one_shot = true
 
-[node name="Attack2_Timer" type="Timer" parent="AttackLogicContainer"]
+[node name="Attack2_Timer" type="Timer" parent="player/AttackLogicContainer"]
 wait_time = 0.4
 one_shot = true
 
-[node name="HealthSystem" parent="." instance=ExtResource("9_qysqu")]
+[node name="HealthSystem" parent="player" instance=ExtResource("9_qysqu")]
 position = Vector2(-45, -63)
 maxHealth = 10.0
 
-[node name="SFXSounds" type="Node2D" parent="."]
+[node name="SFXSounds" type="Node2D" parent="player"]
 
-[node name="WalkSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("12_dlewj")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="HurtSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("13_cnn74")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="JumpSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("14_rprvl")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="DashSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="DashSound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("15_jnfs2")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("16_2xpya")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Attack1Sound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="Attack1Sound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("17_rynvc")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Attack2Sound" type="AudioStreamPlayer2D" parent="SFXSounds"]
+[node name="Attack2Sound" type="AudioStreamPlayer2D" parent="player/SFXSounds"]
 stream = ExtResource("18_1sniv")
 volume_db = -10.0
 bus = &"SFX"
 
-[connection signal="body_entered" from="AttackLogicContainer/Attack1_Hitbox" to="AttackLogicContainer" method="_on_attack_1_hitbox_body_entered"]
-[connection signal="timeout" from="AttackLogicContainer/Attack1_Timer" to="AttackLogicContainer" method="_on_attack_1_timer_timeout"]
-[connection signal="timeout" from="AttackLogicContainer/Attack2_Timer" to="AttackLogicContainer" method="_on_attack_2_timer_timeout"]
+[node name="DialogIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(11, -27)
+scale = Vector2(0.33712, 0.255055)
+texture = ExtResource("19_7xdco")
+
+[connection signal="body_entered" from="player/AttackLogicContainer/Attack1_Hitbox" to="player/AttackLogicContainer" method="_on_attack_1_hitbox_body_entered"]
+[connection signal="timeout" from="player/AttackLogicContainer/Attack1_Timer" to="player/AttackLogicContainer" method="_on_attack_1_timer_timeout"]
+[connection signal="timeout" from="player/AttackLogicContainer/Attack2_Timer" to="player/AttackLogicContainer" method="_on_attack_2_timer_timeout"]

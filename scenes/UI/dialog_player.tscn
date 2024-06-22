@@ -22,8 +22,22 @@ offset_left = 26.0
 offset_top = 19.0
 offset_right = 548.0
 offset_bottom = 115.0
+scale = Vector2(0.88, 0.95)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8i1qf")
 theme_override_font_sizes/font_size = 24
 text = "Test text to test autowrap"
+autowrap_mode = 2
+
+[node name="Press E" type="Label" parent="DialogBackground"]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 99.0
+offset_right = 1027.0
+offset_bottom = 195.0
+scale = Vector2(0.54153, 0.890848)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_8i1qf")
+theme_override_font_sizes/font_size = 16
+text = "Press E"
 autowrap_mode = 2

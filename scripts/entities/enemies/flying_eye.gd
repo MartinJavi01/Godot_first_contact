@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var health_system = $HealthSystem
-@onready var player = %player
+@onready var player = %player/player
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var wing_sound = $Sounds/WingSound
 @onready var hurt_sound = $Sounds/HurtSound

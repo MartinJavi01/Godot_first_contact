@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var player = $"../player"
+@onready var player = %player/player
 
 @export var camera_smothness: float
 

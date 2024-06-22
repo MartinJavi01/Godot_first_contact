@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var hurt_sound = $SFXSounds/HurtSound
 @onready var jump_sound = $SFXSounds/JumpSound
 @onready var dash_sound = $SFXSounds/DashSound
+@onready var dialog_indicator = $"../DialogIndicator"
 
 const MOVE_SPEED = 200.0
 const JUMP_FORCE = -250
@@ -36,6 +37,7 @@ func _physics_process(delta):
 		velocity.x = 0
 			
 	move_and_slide()
+	dialog_indicator.position = Vector2(position.x + 20, position.y - (animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size().y / 3))
 
 func check_movement(delta):
 	direction = Input.get_axis("move_left", "move_right")

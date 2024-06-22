@@ -1,6 +1,13 @@
 {
-	"test": [
-		"Test text to test the display dialog.",
-		"Second text."
+	"welcome_text": [
+		"Hey! Thanks for downloading this small demo, I hope you like it!",
+		"For starters, move with A and D keys, jump with spacebar, dash with J and attack with K.",
+		"You can combo up to two attacks by pressing K while attacking, keep that in mind!",
+		"Press E to interact and ESC to go back to the main menu.",
+		"Have fun!"
+	],
+	"demo_end": [
+		"This is it for now, remember to follow me on my social media for updates!",
+		"Thanks for playing!"
 	]
 }
