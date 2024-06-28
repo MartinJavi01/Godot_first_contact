@@ -43,7 +43,3 @@ func _on_attack_1_timer_timeout():
 
 func _on_attack_2_timer_timeout():
 	player.input_blocked = false
-
-func _on_attack_1_hitbox_body_entered(body):
-	var health_node = body.get_node("HealthSystem")
-	health_node.substract_health(damage)

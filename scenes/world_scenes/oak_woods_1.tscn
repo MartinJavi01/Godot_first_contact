@@ -1410,13 +1410,13 @@ shape = SubResource("WorldBoundaryShape2D_t2kam")
 
 [node name="Enemies" type="Node2D" parent="Entities"]
 
-[node name="player" parent="Entities/Enemies" instance=ExtResource("2_wtevh")]
-unique_name_in_owner = true
-position = Vector2(130, 555)
-
 [node name="FlyingEye" parent="Entities/Enemies" instance=ExtResource("5_yfnu1")]
 position = Vector2(912, 492)
 follow_range = 150.0
+
+[node name="player" parent="Entities" instance=ExtResource("2_wtevh")]
+unique_name_in_owner = true
+position = Vector2(130, 555)
 
 [node name="Dialogs" type="Node2D" parent="."]
 

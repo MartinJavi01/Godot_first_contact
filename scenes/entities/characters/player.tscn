@@ -524,6 +524,5 @@ position = Vector2(11, -27)
 scale = Vector2(0.33712, 0.255055)
 texture = ExtResource("19_7xdco")
 
-[connection signal="body_entered" from="player/AttackLogicContainer/Attack1_Hitbox" to="player/AttackLogicContainer" method="_on_attack_1_hitbox_body_entered"]
 [connection signal="timeout" from="player/AttackLogicContainer/Attack1_Timer" to="player/AttackLogicContainer" method="_on_attack_1_timer_timeout"]
 [connection signal="timeout" from="player/AttackLogicContainer/Attack2_Timer" to="player/AttackLogicContainer" method="_on_attack_2_timer_timeout"]

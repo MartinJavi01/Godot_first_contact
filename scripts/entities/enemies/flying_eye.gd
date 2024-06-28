@@ -67,8 +67,15 @@ func check_health():
 	if health_system.currentHealth <= 0 && !death_sound.playing:
 		hurt_sound.stop()
 		death_sound.play()
-		await get_tree().create_timer(0.6).timeout
+		await get_tree().create_timer(0.3).timeout
 		queue_free()
+
+func sprite_hit(times, wait_time):
+	for n in times:
+		animated_sprite.visible = false
+		await get_tree().create_timer(wait_time).timeout
+		animated_sprite.visible = true
+		await get_tree().create_timer(wait_time).timeout
 
 func _on_hitbox_body_entered(body):
 	if body is CharacterBody2D && body.name == "player":
@@ -83,3 +90,5 @@ func _on_hitbox_body_entered(body):
 func _on_hitbox_area_entered(area):
 	if affected_layers.find(area.get_collision_layer() as int) != -1:
 		hurt_sound.play()
+		health_system.substract_health(area.get_parent().damage)
+		sprite_hit(3, 0.1)
