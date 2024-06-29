@@ -49,6 +49,7 @@ follow_range = 100.0
 move_speed = 100.0
 attack_damage = 2.0
 knockback_force = Vector2(100, -100)
+coin_drop = 2.0
 
 [node name="InnerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(4, 4)

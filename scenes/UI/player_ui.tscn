@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://cror3hthywfii"]
+
+[ext_resource type="Texture2D" uid="uid://dq8d8afqhtv53" path="res://assets/gui/GUI.png" id="1_8o12r"]
+[ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="1_hxhr6"]
+[ext_resource type="Texture2D" uid="uid://cvfi0vdhm1xb1" path="res://assets/graphics/Characters/Knight/idle.png" id="2_3qny5"]
+[ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="3_ft0bu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iehph"]
+atlas = ExtResource("1_8o12r")
+region = Rect2(96, 36, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7ibw"]
+atlas = ExtResource("2_3qny5")
+region = Rect2(45, 38, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu3pc"]
+atlas = ExtResource("1_8o12r")
+region = Rect2(121, 48, 39, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waqsy"]
+atlas = ExtResource("1_8o12r")
+region = Rect2(135, 20, 52, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtcd0"]
+atlas = ExtResource("1_8o12r")
+region = Rect2(72, 20, 49, 7)
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_hxhr6")
+
+[node name="UIBG" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_iehph")
+
+[node name="PlayerIcon" type="TextureRect" parent="UIBG"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 42.0
+offset_bottom = 36.0
+texture = SubResource("AtlasTexture_m7ibw")
+
+[node name="CoinUI" type="TextureRect" parent="UIBG"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 20.0
+offset_right = 96.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_lu3pc")
+
+[node name="CoinText" type="Label" parent="UIBG/CoinUI"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 43.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("3_ft0bu")
+theme_override_font_sizes/font_size = 8
+text = "000"
+horizontal_alignment = 1
+
+[node name="HealthUIGB" type="TextureRect" parent="UIBG"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 11.0
+texture = SubResource("AtlasTexture_waqsy")
+
+[node name="HealthBar" type="TextureRect" parent="UIBG/HealthUIGB"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -4.5
+offset_right = 26.5
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_dtcd0")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bl1m33ejl7kju"]
+[gd_scene load_steps=21 format=3 uid="uid://bl1m33ejl7kju"]
 
 [ext_resource type="Texture2D" uid="uid://rrmgdwthvh2n" path="res://assets/graphics/Scenes/Oak woods/oak_woods_tileset.png" id="1_41ygv"]
 [ext_resource type="Script" path="res://scripts/scenes/root.gd" id="1_qs3bp"]
 [ext_resource type="Script" path="res://scripts/scene_objects/camera.gd" id="2_cxhq4"]
 [ext_resource type="PackedScene" uid="uid://chdov8i3q2250" path="res://scenes/entities/characters/player.tscn" id="2_wtevh"]
 [ext_resource type="PackedScene" uid="uid://yl3ak2i8yff8" path="res://scenes/entities/Enemies/flying_eye.tscn" id="5_yfnu1"]
+[ext_resource type="PackedScene" uid="uid://cror3hthywfii" path="res://scenes/UI/player_ui.tscn" id="6_y1tc7"]
 [ext_resource type="AudioStream" uid="uid://gwhl5inv8d58" path="res://assets/music/oak_woods_theme.ogg" id="6_yqqf1"]
 [ext_resource type="Texture2D" uid="uid://br4d5uqv5tgxq" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_1.png" id="7_bhskr"]
 [ext_resource type="Texture2D" uid="uid://01pvt2ko4qy2" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_2.png" id="8_hmr6n"]
@@ -1333,6 +1334,10 @@ offset_left = 199.167
 offset_top = 393.333
 offset_right = 774.167
 offset_bottom = 525.333
+
+[node name="PlayerUI" parent="MainCamera/UI Container" instance=ExtResource("6_y1tc7")]
+offset = Vector2(10, 10)
+transform = Transform2D(1, 0, 0, 1, 10, 10)
 
 [node name="Background" type="Node2D" parent="."]
 

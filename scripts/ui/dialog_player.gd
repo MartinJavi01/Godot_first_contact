@@ -11,8 +11,8 @@ var displaying = false
 
 func _ready():
 	dialog_background.visible = false
-	UiSignals.connect("display_dialog", on_display_dialog)
-	UiSignals.connect("exit_dialog", finish)
+	SignalBus.connect("display_dialog", on_display_dialog)
+	SignalBus.connect("exit_dialog", finish)
 	scene_text = load_dialog()
 	
 func load_dialog():

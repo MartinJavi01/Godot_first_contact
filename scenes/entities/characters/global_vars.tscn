@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djsdkoior3jq8"]
+
+[ext_resource type="Script" path="res://scripts/autoload/global_vars.gd" id="1_afsvm"]
+
+[node name="GlobalVars" type="Node2D"]
+script = ExtResource("1_afsvm")

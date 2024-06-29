@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var attack_damage: float
 @export var knockback_force: Vector2
 @export var affected_layers = [8]
+@export var coin_drop: float
 
 var target_pos
 var preparing_attack
@@ -67,7 +68,8 @@ func check_health():
 	if health_system.currentHealth <= 0 && !death_sound.playing:
 		hurt_sound.stop()
 		death_sound.play()
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.3).timeout	
+		SignalBus.emit_signal("update_player_coins", coin_drop)
 		queue_free()
 
 func sprite_hit(times, wait_time):

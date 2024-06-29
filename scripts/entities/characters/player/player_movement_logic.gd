@@ -26,6 +26,7 @@ var previous_direction = 1
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
+	SignalBus.emit_signal("update_player_health", get_health_percentaje())
 	if health_system.currentHealth > 0:
 		if !input_blocked: 
 			check_movement(delta) 
@@ -69,6 +70,15 @@ func check_movement(delta):
 			jump_sound.play()
 			velocity.y = JUMP_FORCE
 
+func apply_knockback(knockback_vector: Vector2):
+	hurt_sound.play()
+	velocity = knockback_vector
+	input_blocked = true
+	animated_sprite.on_hit(0.2)
+	
+func get_health_percentaje():
+	return health_system.currentHealth / health_system.maxHealth
+
 func _input(event):
 	if Input.is_action_just_pressed("dash") && direction != 0 && can_dash:
 		dash_sound.play()
@@ -79,9 +89,3 @@ func _input(event):
 		await get_tree().create_timer(DASH_TIME).timeout
 		input_blocked = false
 		dashing = false
-
-func apply_knockback(knockback_vector: Vector2):
-	hurt_sound.play()
-	velocity = knockback_vector
-	input_blocked = true
-	animated_sprite.on_hit(0.2)
