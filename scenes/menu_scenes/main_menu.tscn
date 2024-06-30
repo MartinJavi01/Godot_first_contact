@@ -112,6 +112,7 @@ _data = {
 script = ExtResource("1_scq5j")
 
 [node name="Background" type="Node2D" parent="."]
+scale = Vector2(1.2, 1.2)
 
 [node name="BackgroundBack" type="Sprite2D" parent="Background"]
 z_index = -2
@@ -128,8 +129,9 @@ texture = ExtResource("2_i0cxa")
 [node name="MainUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1150.0
+offset_bottom = 720.0
+scale = Vector2(1.12, 1)
 
 [node name="TitleText" type="Label" parent="MainUI"]
 layout_mode = 0

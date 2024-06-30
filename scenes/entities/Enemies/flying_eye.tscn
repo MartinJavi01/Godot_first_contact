@@ -59,7 +59,7 @@ shape = SubResource("CircleShape2D_8ivh4")
 collision_layer = 0
 collision_mask = 137
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="AttackHitbox" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(4, 4)
 shape = SubResource("CircleShape2D_xlo3j")
 

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var wing_sound = $Sounds/WingSound
 @onready var hurt_sound = $Sounds/HurtSound
 @onready var death_sound = $Sounds/DeathSound
+@onready var inner_hitbox = $InnerHitbox
+@onready var attack_hitbox = $Hitbox/AttackHitbox
 
 @export var follow_range: float
 @export var move_speed: float
@@ -84,6 +86,9 @@ func _on_hitbox_body_entered(body):
 		var playerHealthSystem = body.get_node("HealthSystem")
 		if playerHealthSystem.currentHealth > 0:
 			playerHealthSystem.substract_health(attack_damage)
+			if playerHealthSystem.currentHealth <= 0:
+				inner_hitbox.queue_free()
+				attack_hitbox.queue_free()
 			var knockback_vector = Vector2(1 if global_position.x < body.global_position.x else -1, 1) * knockback_force
 			body.apply_knockback(knockback_vector)
 			await get_tree().create_timer(0.5).timeout

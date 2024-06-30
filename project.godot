@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 GlobalVars="*res://scripts/autoload/global_vars.gd"
 SignalBus="*res://scripts/autoload/signal_bus.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
+
 [input]
 
 pause={

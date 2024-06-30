@@ -1329,11 +1329,22 @@ transform = Transform2D(1.2, 0, 0, 1.2, 0, 0)
 scene_dialogs = "res://assets/dialogs/oak_woods.json"
 
 [node name="DialogBackground" parent="MainCamera/UI Container/DialogPlayer" index="0"]
-visible = false
-offset_left = 199.167
-offset_top = 393.333
-offset_right = 774.167
-offset_bottom = 525.333
+offset_left = 150.0
+offset_top = 444.167
+offset_right = 850.0
+offset_bottom = 594.167
+
+[node name="DialogText" parent="MainCamera/UI Container/DialogPlayer/DialogBackground" index="0"]
+offset_left = 49.1667
+offset_top = 14.9997
+offset_right = 733.167
+offset_bottom = 121.0
+
+[node name="Press E" parent="MainCamera/UI Container/DialogPlayer/DialogBackground" index="1"]
+offset_left = 592.5
+offset_top = 120.833
+offset_right = 1114.5
+offset_bottom = 216.833
 
 [node name="PlayerUI" parent="MainCamera/UI Container" instance=ExtResource("6_y1tc7")]
 offset = Vector2(10, 10)

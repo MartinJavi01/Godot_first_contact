@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var jump_sound = $SFXSounds/JumpSound
 @onready var dash_sound = $SFXSounds/DashSound
 @onready var dialog_indicator = $"../DialogIndicator"
+@onready var player_hitbox = $PlayerHitbox
 
 const MOVE_SPEED = 200.0
 const JUMP_FORCE = -250

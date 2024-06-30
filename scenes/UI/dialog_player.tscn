@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8thto"]
 atlas = ExtResource("1_ddw4y")
-region = Rect2(145, 65, 46, 14)
+region = Rect2(49, 97, 30, 30)
 
 [node name="DialogPlayer" type="CanvasLayer"]
 script = ExtResource("1_2xqo1")
@@ -18,10 +18,10 @@ texture = SubResource("AtlasTexture_8thto")
 
 [node name="DialogText" type="Label" parent="DialogBackground"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 19.0
-offset_right = 548.0
-offset_bottom = 115.0
+offset_left = 42.0
+offset_top = 13.0
+offset_right = 564.0
+offset_bottom = 109.0
 scale = Vector2(0.88, 0.95)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8i1qf")
@@ -31,10 +31,10 @@ autowrap_mode = 2
 
 [node name="Press E" type="Label" parent="DialogBackground"]
 layout_mode = 0
-offset_left = 505.0
-offset_top = 99.0
-offset_right = 1027.0
-offset_bottom = 195.0
+offset_left = 477.0
+offset_top = 105.0
+offset_right = 999.0
+offset_bottom = 201.0
 scale = Vector2(0.54153, 0.890848)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_8i1qf")
