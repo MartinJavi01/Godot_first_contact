@@ -82,7 +82,7 @@ func sprite_hit(times, wait_time):
 		await get_tree().create_timer(wait_time).timeout
 
 func _on_hitbox_body_entered(body):
-	if body is CharacterBody2D && body.name == "player":
+	if body is Player:
 		var playerHealthSystem = body.get_node("HealthSystem")
 		if playerHealthSystem.currentHealth > 0:
 			playerHealthSystem.substract_health(attack_damage)

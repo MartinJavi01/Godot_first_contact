@@ -18,10 +18,10 @@ func update_player_health(health_percentaje: float):
 	health_bar.scale.x = health_percentaje
 
 func update_player_coins(coin_sum: float):
-	GlobalVars.CURRENT_COINS += coin_sum
-	if (GlobalVars.CURRENT_COINS < 10):
-		coin_text.text = "00" + str(GlobalVars.CURRENT_COINS)
-	elif (GlobalVars.CURRENT_COINS < 100):
-		coin_text.text = "0" + str(GlobalVars.CURRENT_COINS)
+	GlobalVars.current_coins += coin_sum
+	if (GlobalVars.current_coins < 10):
+		coin_text.text = "00" + str(GlobalVars.current_coins)
+	elif (GlobalVars.current_coins < 100):
+		coin_text.text = "0" + str(GlobalVars.current_coins)
 	else:
-		coin_text.text = str(GlobalVars.CURRENT_COINS)
+		coin_text.text = str(GlobalVars.current_coins)

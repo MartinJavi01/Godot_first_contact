@@ -439,6 +439,7 @@ size = Vector2(39, 37)
 
 [node name="player" type="CharacterBody2D" parent="."]
 collision_mask = 135
+floor_snap_length = 3.0
 script = ExtResource("1_v8myx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]

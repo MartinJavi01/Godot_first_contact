@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bl1m33ejl7kju"]
+[gd_scene load_steps=22 format=3 uid="uid://bl1m33ejl7kju"]
 
 [ext_resource type="Texture2D" uid="uid://rrmgdwthvh2n" path="res://assets/graphics/Scenes/Oak woods/oak_woods_tileset.png" id="1_41ygv"]
-[ext_resource type="Script" path="res://scripts/scenes/root.gd" id="1_qs3bp"]
+[ext_resource type="Script" path="res://scripts/scenes/world_scenes/base_scene_logic.gd" id="1_e8gup"]
 [ext_resource type="Script" path="res://scripts/scene_objects/camera.gd" id="2_cxhq4"]
 [ext_resource type="PackedScene" uid="uid://chdov8i3q2250" path="res://scenes/entities/characters/player.tscn" id="2_wtevh"]
 [ext_resource type="PackedScene" uid="uid://yl3ak2i8yff8" path="res://scenes/entities/Enemies/flying_eye.tscn" id="5_yfnu1"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://01pvt2ko4qy2" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_2.png" id="8_hmr6n"]
 [ext_resource type="Script" path="res://scripts/scene_objects/parallax_background.gd" id="9_m17kq"]
 [ext_resource type="Texture2D" uid="uid://cyol837bbdnby" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_3.png" id="9_ti85k"]
-[ext_resource type="PackedScene" uid="uid://djlirpsfeeeuk" path="res://scenes/scene_object_scenes/area_reset.tscn" id="12_21jnu"]
+[ext_resource type="PackedScene" uid="uid://djlirpsfeeeuk" path="res://scenes/scene_objects/area_reset.tscn" id="12_21jnu"]
 [ext_resource type="PackedScene" uid="uid://s70gbougmsy" path="res://scenes/UI/dialog_player.tscn" id="13_6stwy"]
 [ext_resource type="PackedScene" uid="uid://dmqvbif050hr7" path="res://scenes/UI/dialog_area.tscn" id="13_tgkv5"]
 [ext_resource type="Texture2D" uid="uid://cl7wkiv60b0yq" path="res://assets/graphics/Scenes/SceneObjects/signpost1.png" id="14_kcv08"]
+[ext_resource type="PackedScene" uid="uid://0a801oolysp4" path="res://scenes/scene_objects/spawn_point.tscn" id="16_y04wj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d83wr"]
 texture = ExtResource("1_41ygv")
@@ -1275,8 +1276,9 @@ size = Vector2(33, 417)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5didc"]
 
-[node name="root" type="Node2D"]
-script = ExtResource("1_qs3bp")
+[node name="root" type="Node2D" node_paths=PackedStringArray("spawn_point_container")]
+script = ExtResource("1_e8gup")
+spawn_point_container = NodePath("SpawnPointContainer")
 
 [node name="Scene building" type="Node2D" parent="."]
 
@@ -1329,6 +1331,7 @@ transform = Transform2D(1.2, 0, 0, 1.2, 0, 0)
 scene_dialogs = "res://assets/dialogs/oak_woods.json"
 
 [node name="DialogBackground" parent="MainCamera/UI Container/DialogPlayer" index="0"]
+visible = false
 offset_left = 150.0
 offset_top = 444.167
 offset_right = 850.0
@@ -1461,5 +1464,11 @@ z_index = -1
 position = Vector2(1, -1)
 scale = Vector2(0.0960457, 0.109647)
 texture = ExtResource("14_kcv08")
+
+[node name="SpawnPointContainer" type="Node2D" parent="."]
+
+[node name="SpawnPoint" parent="SpawnPointContainer" instance=ExtResource("16_y04wj")]
+position = Vector2(194, 193)
+facing_right = true
 
 [editable path="MainCamera/UI Container/DialogPlayer"]
