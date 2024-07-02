@@ -1,0 +1,25 @@
+{
+	"beard_man": [
+		"Such strange times we have to live, ain't we?",
+		"Takin' it easy ain't a bad thing once in a while"
+	],
+	"woman": [
+		"This alley is always so windy, I almost lost my hat twice this week while passing through here. It's horrendous!",
+		"I guess I could stop wearing it, but I think it suits me just fine."
+	],
+	"old_man": [
+		"You seem like an experienced adventurer, care to tell me some good story?"
+	],
+	"hat_man": [
+		"I just dropped my coin purse into the well, but I'm to scared to go down there.",
+		"It's said that some mosters made their nest in the underground caves, and I'm not willing to check if it's true or not.",
+		"Hey! You seem to be a tough guy, if you can bring my coin purse back I will give you some coin for your services. Deal?"
+	],
+	"well_sign": [
+		"The sign is really old and worn out you can't read it properly.",
+		"D#sc##t tow##ds w##l"
+	],
+	"thanks_sign": [
+		"Thanks for playing! This is it for now, follow me on my social medias to keep up with the news!"
+	]
+}

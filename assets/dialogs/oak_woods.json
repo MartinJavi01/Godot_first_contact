@@ -6,8 +6,7 @@
 		"Press E to interact and ESC to go back to the main menu.",
 		"Have fun!"
 	],
-	"demo_end": [
-		"This is it for now, remember to follow me on my social media for updates!",
-		"Thanks for playing!"
+	"to_town": [
+		"To town ->"
 	]
 }

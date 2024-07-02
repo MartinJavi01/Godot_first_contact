@@ -3,16 +3,10 @@ extends CanvasLayer
 @onready var health_bar = $UIBG/HealthUIGB/HealthBar
 @onready var coin_text = $UIBG/CoinUI/CoinText
 
-var coins_updated = false
-
-func _init():
+func _ready():
 	SignalBus.connect("update_player_health", update_player_health)
 	SignalBus.connect("update_player_coins", update_player_coins)
-	
-func _process(delta):
-	if !coins_updated:
-		coins_updated = true
-		update_player_coins(0)
+	update_player_coins(0)
 		
 func update_player_health(health_percentaje: float):
 	health_bar.scale.x = health_percentaje

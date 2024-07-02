@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://cny72ugeiq5xp"]
+
+[ext_resource type="Script" path="res://scripts/scenes/world_scenes/base_scene_logic.gd" id="1_qtcku"]
+[ext_resource type="PackedScene" uid="uid://s70gbougmsy" path="res://scenes/UI/dialog_player.tscn" id="2_vekmq"]
+[ext_resource type="PackedScene" uid="uid://cror3hthywfii" path="res://scenes/UI/player_ui.tscn" id="3_exoau"]
+[ext_resource type="PackedScene" uid="uid://chdov8i3q2250" path="res://scenes/entities/characters/player.tscn" id="4_vrdhm"]
+[ext_resource type="PackedScene" uid="uid://0a801oolysp4" path="res://scenes/scene_objects/spawn_point.tscn" id="5_ic7wo"]
+[ext_resource type="Script" path="res://scripts/scene_objects/camera.gd" id="5_qxhsq"]
+
+[node name="root" type="Node2D"]
+script = ExtResource("1_qtcku")
+
+[node name="UI Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(73, 128)
+
+[node name="DialogPlayer" parent="UI Container" instance=ExtResource("2_vekmq")]
+scale = Vector2(1.2, 1.2)
+transform = Transform2D(1.2, 0, 0, 1.2, 0, 0)
+
+[node name="DialogBackground" parent="UI Container/DialogPlayer" index="0"]
+visible = false
+offset_left = 150.0
+offset_top = 444.167
+offset_right = 850.0
+offset_bottom = 594.167
+
+[node name="DialogText" parent="UI Container/DialogPlayer/DialogBackground" index="0"]
+offset_left = 49.1667
+offset_top = 14.9997
+offset_right = 733.167
+offset_bottom = 121.0
+
+[node name="Press E" parent="UI Container/DialogPlayer/DialogBackground" index="1"]
+offset_left = 592.5
+offset_top = 120.833
+offset_right = 1114.5
+offset_bottom = 216.833
+
+[node name="PlayerUI" parent="UI Container" instance=ExtResource("3_exoau")]
+offset = Vector2(10, 10)
+transform = Transform2D(1, 0, 0, 1, 10, 10)
+
+[node name="SceneBuilding" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="SceneBuilding"]
+format = 2
+
+[node name="Entities" type="Node2D" parent="SceneBuilding"]
+
+[node name="player" parent="SceneBuilding/Entities" instance=ExtResource("4_vrdhm")]
+unique_name_in_owner = true
+
+[node name="SpawnPointContainer" type="Node2D" parent="SceneBuilding"]
+
+[node name="SpawnPoint" parent="SceneBuilding/SpawnPointContainer" instance=ExtResource("5_ic7wo")]
+position = Vector2(194, 193)
+facing_right = true
+
+[node name="TransitionPointContainer" type="Node2D" parent="SceneBuilding"]
+
+[node name="Background" type="Node2D" parent="SceneBuilding"]
+
+[node name="MainCamera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(239, 510)
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("5_qxhsq")
+camera_smothness = 1.0
+
+[editable path="UI Container/DialogPlayer"]

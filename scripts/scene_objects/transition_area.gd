@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var target_scene: String
+@export_file var target_scene: String
 @export var target_point: int
 
 func _on_body_entered(body):

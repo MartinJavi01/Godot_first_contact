@@ -436,6 +436,7 @@ size = Vector2(18, 37)
 size = Vector2(39, 37)
 
 [node name="player" type="Node2D"]
+z_index = 5
 
 [node name="player" type="CharacterBody2D" parent="."]
 collision_mask = 135

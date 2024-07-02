@@ -6,15 +6,18 @@ extends Node2D
 
 func _ready():
 	GlobalVars.current_scene = scene_file_path
-	move_player_to_spawn_pos(get_target_spawn_point().position)
+	move_player_to_spawn_pos(get_target_spawn_point())
 		
 func get_target_spawn_point():
 	for spawn_point in spawn_point_container.get_children():
 		if spawn_point.spawn_id == GlobalVars.target_spawn_point:
 			return spawn_point
 
-func move_player_to_spawn_pos(spawn_pos: Vector2):
-	player.position = spawn_pos
+func move_player_to_spawn_pos(spawn_point: SpawnPoint):
+	player.position = spawn_point.position
+	if !spawn_point.facing_right:
+		player.get_child(0).scale.x = -1
+		player.get_child(0).previous_direction = -1
 	GlobalVars.target_spawn_point = 0
 
 func _input(event):
