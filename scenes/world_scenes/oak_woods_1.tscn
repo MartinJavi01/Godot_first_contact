@@ -1438,7 +1438,7 @@ texture = ExtResource("14_kcv08")
 [node name="SpawnPointContainer" type="Node2D" parent="SceneBuilding"]
 
 [node name="DefaultSpawnPoint" parent="SceneBuilding/SpawnPointContainer" instance=ExtResource("16_y04wj")]
-position = Vector2(194, 193)
+position = Vector2(68, 561)
 facing_right = true
 
 [node name="FromTownSpawnPoint" parent="SceneBuilding/SpawnPointContainer" instance=ExtResource("16_y04wj")]

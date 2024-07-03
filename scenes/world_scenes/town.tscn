@@ -822,7 +822,7 @@ facing_right = true
 [node name="TransitionPointContainer" type="Node2D" parent="SceneBuilding"]
 
 [node name="TransitionArea" parent="SceneBuilding/TransitionPointContainer" instance=ExtResource("22_0avwf")]
-position = Vector2(-6, 591)
+position = Vector2(-20, 591)
 target_scene = "res://scenes/world_scenes/oak_woods_1.tscn"
 target_point = 1
 
