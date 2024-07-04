@@ -11,8 +11,11 @@ class_name Player
 @onready var dash_sound = $SFXSounds/DashSound
 @onready var dialog_indicator = $"../DialogIndicator"
 @onready var player_hitbox = $PlayerHitbox
+@onready var player_crouch_hitbox = $PlayerCrouchHitbox
 
 const MOVE_SPEED = 200.0
+const CROUCH_MOVE_SPEED = 100.0
+const CROUCH_SLIDE_SPEED = 150.0
 const JUMP_FORCE = -250
 const JUMP_TIME = 0.3
 const DASH_TIME = 0.3
@@ -23,6 +26,8 @@ var input_blocked = false
 
 var dashing = false
 var can_dash = true
+var crouching = false
+var can_stand_up = true
 
 var direction = 1
 var previous_direction = 1
@@ -41,7 +46,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = lerp(velocity.x, 0.0, 0.1)
 			if dashing:
-				velocity = Vector2(direction * MOVE_SPEED * 2, 0.0)
+				velocity = Vector2(direction * (CROUCH_SLIDE_SPEED if crouching else MOVE_SPEED) * 2, 0.0)
 	else:
 		velocity.x = 0
 			
@@ -51,7 +56,7 @@ func _physics_process(delta):
 func check_movement(delta):
 	direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
-		velocity.x = direction * MOVE_SPEED
+		velocity.x = direction * (CROUCH_MOVE_SPEED if crouching else MOVE_SPEED)
 		if is_on_floor() && !walk_sound.playing:
 			walk_sound.play()
 		if direction != previous_direction:
@@ -97,3 +102,25 @@ func _input(event):
 		await get_tree().create_timer(DASH_TIME).timeout
 		input_blocked = false
 		dashing = false
+	
+	if event.is_action_pressed("crouch"):
+		crouching = true
+		player_hitbox.disabled = true
+		player_crouch_hitbox.disabled = false
+	
+	if event.is_action_released("crouch") && can_stand_up:
+		call_deferred("stand_up")
+		
+func stand_up():
+	crouching = false
+	player_hitbox.disabled = false
+	player_crouch_hitbox.disabled = true
+
+func _on_upper_wall_detector_body_entered(body):
+	can_stand_up = false
+
+
+func _on_upper_wall_detector_body_exited(body):
+	can_stand_up = true
+	if !Input.is_action_pressed("crouch"):
+		call_deferred("stand_up")

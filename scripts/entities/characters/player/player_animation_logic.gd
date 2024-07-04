@@ -14,9 +14,9 @@ func _process(delta):
 			if attack_1_timer.is_stopped() && attack_2_timer.is_stopped():
 				if player.is_on_floor():
 					if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right"):
-						play("walk")
+						play("crouch_walk") if player.crouching else play("walk")
 					else:
-						play("idle")
+						play("crouch_idle") if player.crouching else play("idle")
 				else:
 					if player.velocity.y < 0:
 						play("jump")
@@ -36,7 +36,7 @@ func on_hit(knockback_time: float):
 
 func on_dash(dash_time: float):
 	on_action = true
-	play("dash")
+	play("crouch_dash") if player.crouching else play("dash")
 	await get_tree().create_timer(dash_time).timeout
 	on_action = false
 

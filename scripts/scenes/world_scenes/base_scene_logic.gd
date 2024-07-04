@@ -6,6 +6,7 @@ extends Node2D
 @onready var scene_transition_rect = %SceneTransitionRect
 
 func _ready():
+	scene_transition_rect.modulate = Color(0,0,0,255)
 	scene_transition_rect.get_child(0).play("scene_entry")
 	GlobalVars.current_scene = scene_file_path
 	move_player_to_spawn_pos(get_target_spawn_point())
