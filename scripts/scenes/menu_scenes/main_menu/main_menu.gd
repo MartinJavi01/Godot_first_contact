@@ -20,7 +20,10 @@ func _ready():
 func _on_play_button_pressed():
 	ui_accept.play()
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://scenes/world_scenes/oak_woods_1.tscn")
+	if FileAccess.file_exists(GlobalVars.SAVE_FILE_PATH):
+		GlobalVars.load_save()
+	else:
+		get_tree().change_scene_to_file("res://scenes/world_scenes/oak_woods_1.tscn")
 
 func _on_settings_button_pressed():
 	ui_accept.play()
