@@ -593,6 +593,7 @@ size = Vector2(42, 205)
 [node name="root" type="Node2D" node_paths=PackedStringArray("spawn_point_container")]
 script = ExtResource("1_neq6x")
 spawn_point_container = NodePath("SceneBuilding/SpawnPointContainer")
+scene_name = "Town"
 
 [node name="UI Container" type="Control" parent="."]
 layout_mode = 3

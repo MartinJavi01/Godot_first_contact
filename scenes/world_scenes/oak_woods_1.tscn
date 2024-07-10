@@ -1280,6 +1280,7 @@ size = Vector2(28, 174)
 [node name="root" type="Node2D" node_paths=PackedStringArray("spawn_point_container")]
 script = ExtResource("1_e8gup")
 spawn_point_container = NodePath("SceneBuilding/SpawnPointContainer")
+scene_name = "Oak woods"
 
 [node name="UI Container" type="Control" parent="."]
 layout_mode = 3

@@ -1,11 +1,14 @@
 extends Node2D
 
 @export var spawn_point_container: Node2D
+@export var scene_name: String
 
 @onready var player = %player
 @onready var scene_transition_rect = %SceneTransitionRect
 
 func _ready():
+	GlobalVars.current_scene_name = scene_name
+	GlobalVars.current_scene = scene_file_path
 	SignalBus.connect("save_game_vars", update_current_scene)
 	scene_transition_rect.modulate = Color(0,0,0,255)
 	scene_transition_rect.get_child(0).play("scene_entry")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cghqbxago8jlm"]
+[gd_scene load_steps=29 format=3 uid="uid://cghqbxago8jlm"]
 
 [ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="1_fhmiw"]
 [ext_resource type="Texture2D" uid="uid://br4d5uqv5tgxq" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_1.png" id="1_gb1m3"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://01pvt2ko4qy2" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_2.png" id="2_i0cxa"]
 [ext_resource type="Texture2D" uid="uid://dq8d8afqhtv53" path="res://assets/gui/GUI.png" id="4_xju68"]
 [ext_resource type="StyleBox" uid="uid://crqw1grdlvl0d" path="res://assets/styles/small_button.tres" id="5_a5uwp"]
+[ext_resource type="Script" path="res://scripts/scenes/menu_scenes/main_menu/saves_manager.gd" id="7_74rne"]
+[ext_resource type="StyleBox" uid="uid://bwco15nma46fq" path="res://assets/styles/save_file_texture.tres" id="7_ik0ni"]
 [ext_resource type="AudioStream" uid="uid://gyredjxpvdab" path="res://assets/music/menu_music.ogg" id="7_inma6"]
 [ext_resource type="AudioStream" uid="uid://xpou0pw3th0v" path="res://assets/sfx/ui_accept.ogg" id="8_3qxea"]
+[ext_resource type="Texture2D" uid="uid://b1frqg1lume80" path="res://assets/gui/DeleteSaveCross.png" id="8_7qogb"]
 [ext_resource type="AudioStream" uid="uid://bplle3cr3iysj" path="res://assets/sfx/ui_cancel.ogg" id="9_qk41t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwlyh"]
@@ -20,7 +23,55 @@ region_rect = Rect2(0.0293121, 95.3685, 48.0477, 32.4268)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3yyc"]
 
-[sub_resource type="Animation" id="Animation_cp56w"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70ll7"]
+texture = ExtResource("8_7qogb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hlas"]
+texture = ExtResource("8_7qogb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i51qb"]
+texture = ExtResource("8_7qogb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ervg6"]
+texture = ExtResource("8_7qogb")
+modulate_color = Color(0.568627, 0.568627, 0.568627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2ylg"]
+texture = ExtResource("8_7qogb")
+modulate_color = Color(0.568627, 0.568627, 0.568627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ag4jt"]
+texture = ExtResource("8_7qogb")
+modulate_color = Color(0.568627, 0.568627, 0.568627, 1)
+
+[sub_resource type="Animation" id="Animation_re6w6"]
+resource_name = "main_to_settings"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButtonsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(350, 120), Vector2(1500, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1500, 120), Vector2(170, 120)]
+}
+
+[sub_resource type="Animation" id="Animation_ovl2t"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -32,7 +83,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(300, 160)]
+"values": [Vector2(350, 120)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,37 +95,22 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1500, 100)]
+"values": [Vector2(1500, 120)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LoadGamePanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1000, 120)]
 }
 
-[sub_resource type="Animation" id="Animation_xvjai"]
-resource_name = "main_to_settings"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainButtonsPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(300, 160), Vector2(-900, 160)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SettingsPanel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1500, 100), Vector2(170, 100)]
-}
-
-[sub_resource type="Animation" id="Animation_y1syd"]
+[sub_resource type="Animation" id="Animation_8v6wd"]
 resource_name = "settings_to_main"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -83,10 +119,10 @@ tracks/0/path = NodePath("MainButtonsPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-900, 160), Vector2(300, 160)]
+"values": [Vector2(1500, 120), Vector2(350, 120)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -95,17 +131,73 @@ tracks/1/path = NodePath("SettingsPanel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(170, 100), Vector2(1500, 100)]
+"values": [Vector2(170, 120), Vector2(1500, 120)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wok5u"]
+[sub_resource type="Animation" id="Animation_a2q3h"]
+resource_name = "main_to_saves"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButtonsPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(350, 120), Vector2(-1000, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadGamePanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1000, 120), Vector2(170, 120)]
+}
+
+[sub_resource type="Animation" id="Animation_e2yd7"]
+resource_name = "saves_to_main"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadGamePanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(170, 120), Vector2(-1000, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainButtonsPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1000, 120), Vector2(350, 120)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tfm6f"]
 _data = {
-"RESET": SubResource("Animation_cp56w"),
-"main_to_settings": SubResource("Animation_xvjai"),
-"settings_to_main": SubResource("Animation_y1syd")
+"RESET": SubResource("Animation_ovl2t"),
+"main_to_saves": SubResource("Animation_a2q3h"),
+"main_to_settings": SubResource("Animation_re6w6"),
+"saves_to_main": SubResource("Animation_e2yd7"),
+"settings_to_main": SubResource("Animation_8v6wd")
 }
 
 [node name="MainMenu" type="Node2D"]
@@ -145,10 +237,10 @@ vertical_alignment = 1
 
 [node name="MainButtonsPanel" type="Panel" parent="MainUI"]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 160.0
-offset_right = 900.0
-offset_bottom = 560.0
+offset_left = 350.0
+offset_top = 120.0
+offset_right = 849.999
+offset_bottom = 620.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mwlyh")
 
 [node name="PlayButton" type="Button" parent="MainUI/MainButtonsPanel"]
@@ -157,10 +249,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 211.0
-offset_top = -112.0
-offset_right = -221.0
-offset_bottom = -35.0
+offset_left = 100.0
+offset_top = -122.0
+offset_right = -100.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fhmiw")
@@ -177,9 +269,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 211.0
+offset_left = 100.0
 offset_top = -27.0
-offset_right = -221.0
+offset_right = -100.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -198,10 +290,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 211.0
-offset_top = 55.0
-offset_right = -221.0
-offset_bottom = 132.0
+offset_left = 100.0
+offset_top = 65.0
+offset_right = -100.0
+offset_bottom = 142.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fhmiw")
@@ -216,9 +308,9 @@ clip_text = true
 [node name="SettingsPanel" type="Panel" parent="MainUI"]
 layout_mode = 0
 offset_left = 1500.0
-offset_top = 100.0
-offset_right = 2298.0
-offset_bottom = 622.0
+offset_top = 120.0
+offset_right = 2300.0
+offset_bottom = 620.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mwlyh")
 
 [node name="SettingsTitleLabel" type="Label" parent="MainUI/SettingsPanel"]
@@ -308,7 +400,177 @@ offset_right = 555.0
 offset_bottom = 48.0
 value = 83.0
 
-[node name="BackButton" type="Button" parent="MainUI/SettingsPanel"]
+[node name="SettingsBackButton" type="Button" parent="MainUI/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = 122.0
+offset_right = -551.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_a5uwp")
+theme_override_styles/hover = ExtResource("5_a5uwp")
+theme_override_styles/pressed = ExtResource("5_a5uwp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c3yyc")
+text = "GO BACK"
+clip_text = true
+
+[node name="LoadGamePanel" type="Panel" parent="MainUI"]
+offset_left = -1000.0
+offset_top = 120.0
+offset_right = -202.0
+offset_bottom = 642.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mwlyh")
+script = ExtResource("7_74rne")
+
+[node name="SettingsTitleLabel" type="Label" parent="MainUI/LoadGamePanel"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 41.0
+offset_right = 518.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 32
+text = "LOAD GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save1Button" type="Button" parent="MainUI/LoadGamePanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -133.0
+offset_right = -270.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("7_ik0ni")
+theme_override_styles/hover = ExtResource("7_ik0ni")
+theme_override_styles/pressed = ExtResource("7_ik0ni")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+text = "NEW GAME"
+
+[node name="DeleteSave1Button" type="Button" parent="MainUI/LoadGamePanel/Save1Button"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 450.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_70ll7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3hlas")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i51qb")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ervg6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+disabled = true
+
+[node name="Save2Button" type="Button" parent="MainUI/LoadGamePanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -63.0
+offset_right = -270.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("7_ik0ni")
+theme_override_styles/hover = ExtResource("7_ik0ni")
+theme_override_styles/pressed = ExtResource("7_ik0ni")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+text = "NEW GAME"
+
+[node name="DeleteSave2Button" type="Button" parent="MainUI/LoadGamePanel/Save2Button"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 450.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_70ll7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3hlas")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i51qb")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k2ylg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+disabled = true
+
+[node name="Save3Button" type="Button" parent="MainUI/LoadGamePanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 7.0
+offset_right = -270.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("7_ik0ni")
+theme_override_styles/hover = ExtResource("7_ik0ni")
+theme_override_styles/pressed = ExtResource("7_ik0ni")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+text = "NEW GAME"
+
+[node name="DeleteSave3Button" type="Button" parent="MainUI/LoadGamePanel/Save3Button"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 450.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fhmiw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_70ll7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3hlas")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i51qb")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ag4jt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
+disabled = true
+
+[node name="SavesBackButton" type="Button" parent="MainUI/LoadGamePanel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -331,7 +593,7 @@ clip_text = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainUI"]
 libraries = {
-"": SubResource("AnimationLibrary_wok5u")
+"": SubResource("AnimationLibrary_tfm6f")
 }
 
 [node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
@@ -353,4 +615,11 @@ bus = &"SFX"
 [connection signal="value_changed" from="MainUI/SettingsPanel/MasterVolumeSetting/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="MainUI/SettingsPanel/MusicVolumeSetting/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="MainUI/SettingsPanel/SFXVolumeSetting/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
-[connection signal="pressed" from="MainUI/SettingsPanel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MainUI/SettingsPanel/SettingsBackButton" to="." method="_on_settings_back_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/Save1Button" to="MainUI/LoadGamePanel" method="_on_save_1_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/Save1Button/DeleteSave1Button" to="MainUI/LoadGamePanel" method="_on_delete_save_1_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/Save2Button" to="MainUI/LoadGamePanel" method="_on_save_2_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/Save2Button/DeleteSave2Button" to="MainUI/LoadGamePanel" method="_on_delete_save_2_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/Save3Button" to="MainUI/LoadGamePanel" method="_on_save_3_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/Save3Button/DeleteSave3Button" to="MainUI/LoadGamePanel" method="_on_delete_save_3_button_pressed"]
+[connection signal="pressed" from="MainUI/LoadGamePanel/SavesBackButton" to="." method="_on_saves_back_button_pressed"]

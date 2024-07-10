@@ -8,7 +8,7 @@ func _input(event):
 	if event.is_action_pressed("save") && can_save:
 		SignalBus.emit_signal("save_game_vars")
 		GlobalVars.current_spawn_point = spawn_id
-		var save_file = FileAccess.open(GlobalVars.SAVE_FILE_PATH, FileAccess.WRITE)
+		var save_file = FileAccess.open(GlobalVars.SAVE_FILE_PATH_BASE.format({"n":str(GlobalVars.current_save_n)}), FileAccess.WRITE)
 		save_file.store_string(JSON.stringify(GlobalVars.get_save_data()))
 		save_file.close()
 
