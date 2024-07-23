@@ -34,3 +34,10 @@ func set_global_vars(game_config: Dictionary):
 	GlobalVars.current_spawn_point = game_config["current_spawn_point"]
 	GlobalVars.current_scene = game_config["current_scene"]
 	GlobalVars.current_scene_name = game_config["current_scene_name"]
+
+func reset_vars():
+	current_coins = 0
+	target_spawn_point = 0
+	current_spawn_point = 0
+	current_scene = ""
+	current_scene_name = ""

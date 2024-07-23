@@ -8,7 +8,6 @@ extends Node2D
 
 func _ready():
 	GlobalVars.current_scene_name = scene_name
-	GlobalVars.current_scene = scene_file_path
 	SignalBus.connect("save_game_vars", update_current_scene)
 	scene_transition_rect.modulate = Color(0,0,0,255)
 	scene_transition_rect.get_child(0).play("scene_entry")
@@ -30,4 +29,5 @@ func update_current_scene():
 
 func _input(event):
 	if event.is_action_pressed("pause"):
+		GlobalVars.reset_vars()
 		get_tree().change_scene_to_file("res://scenes/menu_scenes/main_menu.tscn")

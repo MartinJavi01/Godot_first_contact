@@ -71,6 +71,7 @@ func manage_save(save_n: int):
 		GlobalVars.set_global_vars(GlobalVars.load_save(save_n))
 		get_tree().change_scene_to_file(GlobalVars.current_scene)
 	else:
+		GlobalVars.current_scene = GlobalVars.default_scene
 		get_tree().change_scene_to_file(GlobalVars.default_scene)
 
 func delete_save_file(save_n):
