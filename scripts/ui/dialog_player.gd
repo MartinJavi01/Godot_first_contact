@@ -8,6 +8,7 @@ extends CanvasLayer
 var scene_text = {}
 var current_text = []
 var displaying = false
+var printing_text = false
 
 func _ready():
 	dialog_background.visible = false
@@ -24,20 +25,42 @@ func load_dialog():
 
 func on_display_dialog(text_key):
 	if displaying:
-		if current_text.size() > 0:
-			show_text()
+		if printing_text:
+			printing_text = false
 		else:
-			finish()
+			if current_text.size() > 0:
+				show_text()
+			else:
+				finish()
 	else:
 		dialog_background.visible = true
 		displaying = true
-		current_text = scene_text[text_key].duplicate()
+		if contains_key(text_key):
+			current_text = scene_text[text_key].duplicate()
+		else:
+			current_text = ["Dialog not found for key '" + text_key + "', at file '" + scene_dialogs + "'"]
 		show_text()
 
 func show_text():
-	dialog_text.text = current_text.pop_front()
+	var current_string = current_text.pop_front()
+	dialog_text.text = ""
+	printing_text = true
+	for c in current_string.split():
+		if printing_text:
+			dialog_text.text += c
+			await get_tree().create_timer(0.025).timeout
+		else:
+			dialog_text.text = current_string
+	printing_text = false
 
 func finish():
 	displaying = false
 	dialog_text.text = ""
 	dialog_background.visible = false
+	
+func contains_key(text_key):
+	var contains = false
+	for s in scene_text:
+		if s == text_key:
+			contains = true
+	return contains
