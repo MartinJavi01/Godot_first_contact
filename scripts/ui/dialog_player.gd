@@ -24,6 +24,8 @@ func load_dialog():
 	
 
 func on_display_dialog(text_key):
+	if Input.get_connected_joypads().size() > 0 && contains_key(text_key + "_controller"):
+		text_key += "_controller"
 	if displaying:
 		if printing_text:
 			printing_text = false

@@ -25,6 +25,9 @@
 	"bench_tutorial": [
 		"Use benches to save your game! Just press G near one and this will be your respawn position when respawning."
 	],
+	"bench_tutorial_controller": [
+		"Use benches to save your game! Just press SELECT near one and this will be your respawn position when respawning."
+	],
 	"thanks_sign": [
 		"Thanks for playing! This is it for now, follow me on my social medias to keep up with the news!"
 	]

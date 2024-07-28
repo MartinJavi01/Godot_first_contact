@@ -2,15 +2,30 @@
 	"welcome_text": [
 		"Hey! Thanks for downloading this small demo, I hope you like it!",
 		"For starters, move with A and D keys, and jump with spacebar. The more you hold the spacebar the higher the jump!",
+		"Press ESC to return to the main menu.",
+		"Have fun!"
+	],
+	"welcome_text_controller": [
+		"Hey! Thanks for downloading this small demo, I hope you like it!",
+		"For starters, move with the left joystick, and jump with X. The more you hold the X the higher the jump!",
+		"Press START to return to the main menu.",
 		"Have fun!"
 	],
 	"dash_attack_tutorial": [
 		"Long jump ahead! Press J to dash. Although there's good loot under this cliff (not really).",
 		"Press K to attack enemies by swinging your blade, you can combo up to two attacks by pressing K repetidly."
 	],
+	"dash_attack_tutorial_controller": [
+		"Long jump ahead! Press R1 to dash. Although there's good loot under this cliff (not really).",
+		"Press SQUARE to attack enemies by swinging your blade, you can combo up to two attacks by pressing SQUARE repetidly."
+	],
 	"crouch_tutorial": [
 		"You are too tall to go through this wall, afourtunately you have functional extremities and can crouch by holding C!",
 		"If you stop holding C while having a wall over your head you won't be able to stand up until there's enough space."
+	],
+	"crouch_tutorial_controller": [
+		"You are too tall to go through this wall, afourtunately you have functional extremities and can crouch by holding O!",
+		"If you stop holding O while having a wall over your head you won't be able to stand up until there's enough space."
 	],
 	"to_town": [
 		"To town ->"

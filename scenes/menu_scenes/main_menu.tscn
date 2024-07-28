@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cghqbxago8jlm"]
+[gd_scene load_steps=26 format=3 uid="uid://cghqbxago8jlm"]
 
 [ext_resource type="FontFile" uid="uid://b4xjuu5pramh6" path="res://assets/font/PixelOperator8-Bold.ttf" id="1_fhmiw"]
 [ext_resource type="Texture2D" uid="uid://br4d5uqv5tgxq" path="res://assets/graphics/Scenes/Oak woods/background/background_layer_1.png" id="1_gb1m3"]
@@ -16,12 +16,6 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwlyh"]
 texture = ExtResource("4_xju68")
 region_rect = Rect2(0.0293121, 95.3685, 48.0477, 32.4268)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3m2jx"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8i7fq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3yyc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70ll7"]
 texture = ExtResource("8_7qogb")
@@ -85,6 +79,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_a2q3h"]
 resource_name = "main_to_saves"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -112,6 +107,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_re6w6"]
 resource_name = "main_to_settings"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -139,6 +135,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_e2yd7"]
 resource_name = "saves_to_main"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -166,6 +163,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8v6wd"]
 resource_name = "settings_to_main"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -260,7 +258,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_a5uwp")
 theme_override_styles/hover = ExtResource("5_a5uwp")
 theme_override_styles/pressed = ExtResource("5_a5uwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 text = "PLAY"
 
 [node name="SettingsButton" type="Button" parent="MainUI/MainButtonsPanel"]
@@ -280,7 +277,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_a5uwp")
 theme_override_styles/hover = ExtResource("5_a5uwp")
 theme_override_styles/pressed = ExtResource("5_a5uwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8i7fq")
 text = "SETTINGS"
 clip_text = true
 
@@ -301,7 +297,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_a5uwp")
 theme_override_styles/hover = ExtResource("5_a5uwp")
 theme_override_styles/pressed = ExtResource("5_a5uwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_c3yyc")
 text = "EXIT"
 clip_text = true
 
@@ -417,7 +412,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_a5uwp")
 theme_override_styles/hover = ExtResource("5_a5uwp")
 theme_override_styles/pressed = ExtResource("5_a5uwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_c3yyc")
 text = "GO BACK"
 clip_text = true
 
@@ -460,7 +454,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("7_ik0ni")
 theme_override_styles/hover = ExtResource("7_ik0ni")
 theme_override_styles/pressed = ExtResource("7_ik0ni")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 text = "NEW GAME"
 
 [node name="DeleteSave1Button" type="Button" parent="MainUI/LoadGamePanel/Save1Button"]
@@ -482,7 +475,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_70ll7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_3hlas")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_i51qb")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ervg6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 disabled = true
 
 [node name="Save2Button" type="Button" parent="MainUI/LoadGamePanel"]
@@ -503,7 +495,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("7_ik0ni")
 theme_override_styles/hover = ExtResource("7_ik0ni")
 theme_override_styles/pressed = ExtResource("7_ik0ni")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 text = "NEW GAME"
 
 [node name="DeleteSave2Button" type="Button" parent="MainUI/LoadGamePanel/Save2Button"]
@@ -525,7 +516,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_70ll7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_3hlas")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_i51qb")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_k2ylg")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 disabled = true
 
 [node name="Save3Button" type="Button" parent="MainUI/LoadGamePanel"]
@@ -546,7 +536,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("7_ik0ni")
 theme_override_styles/hover = ExtResource("7_ik0ni")
 theme_override_styles/pressed = ExtResource("7_ik0ni")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 text = "NEW GAME"
 
 [node name="DeleteSave3Button" type="Button" parent="MainUI/LoadGamePanel/Save3Button"]
@@ -568,7 +557,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_70ll7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_3hlas")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_i51qb")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ag4jt")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3m2jx")
 disabled = true
 
 [node name="SavesBackButton" type="Button" parent="MainUI/LoadGamePanel"]
@@ -588,7 +576,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_a5uwp")
 theme_override_styles/hover = ExtResource("5_a5uwp")
 theme_override_styles/pressed = ExtResource("5_a5uwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_c3yyc")
 text = "GO BACK"
 clip_text = true
 

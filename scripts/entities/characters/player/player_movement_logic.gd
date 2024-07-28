@@ -56,6 +56,7 @@ func _physics_process(delta):
 func check_movement(delta):
 	direction = Input.get_axis("move_left", "move_right")
 	if direction != 0:
+		direction = 1 if direction > 0 else -1
 		velocity.x = direction * (CROUCH_MOVE_SPEED if crouching else MOVE_SPEED)
 		if is_on_floor() && !walk_sound.playing:
 			walk_sound.play()
